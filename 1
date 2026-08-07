@@ -1,0 +1,54 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int minimumMoves(int N, string A, string B)
+{ int count=0;
+    for(int i=0;i<N;i++)
+    {
+        if(A[i]<B[i]) return -1;
+       
+      }
+      for(char ch='z';ch>='a';ch--)
+       {
+           char target='{';
+           for(int i=0;i<N;i++)
+           {
+               if(A[i]==ch && A[i]!=B[i])
+               {
+                   if(B[i]<target)
+                   {
+                       target=B[i];
+                   }
+               }
+               
+           }
+           if(target=='{') continue;
+           count++;
+           for(int i=0;i<N;i++)
+           {
+               if(A[i]==ch && B[i]<=target)
+               {
+                   A[i]=target;
+               }
+           }
+            
+       }
+        return count;
+
+    }
+   
+
+int main()
+{
+    int N;
+    cin >> N;
+
+    string A, B;
+    cin >> A >> B;
+
+    cout << minimumMoves(N, A, B);
+
+    return 0;
+}
