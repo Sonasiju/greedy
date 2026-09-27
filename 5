@@ -1,0 +1,43 @@
+/******************************************************************************
+https://www.onlinegdb.com/online_c++_debugger#editor_1
+                              Online C++ Debugger.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Debug" button to debug it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+    vector<int>freq(26,0);
+    string s;
+    cout<<"Enter string";
+    cin>>s;
+    int n=s.length();
+    int i=0;
+while(i<n)
+{
+    if(isalpha(s[i]))
+    {
+        char c=s[i];
+        int count=0;
+        i++;
+        while(i<n && isdigit(s[i]))
+        {
+            count=count*10+(s[i]-'0');
+            i++;
+        }
+         freq[c-'a']+=count;
+    }
+}
+for(int i=0;i<26;i++)
+{
+    if(freq[i]>0)
+    {
+        cout<<char('a'+i)<<freq[i];
+    }
+}
+    return 0;
+}
