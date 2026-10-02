@@ -1,0 +1,38 @@
+
+#include <iostream>
+#include<algorithm>
+#include<vector>
+#include<unordered_map>
+using namespace std;
+
+int main()
+{
+    
+    unordered_map<int,int>freq;
+    for(int x : arr)
+    {
+        freq[x]++;
+    }
+    vector<int>distinct;
+    for(auto &x:freq)
+    {
+        distinct.push_back(x.first);
+    }
+    sort(distinct.begin(),distinct.end());
+    int count = freq[distinct[0]];
+    int max_count=1;
+    for(int i=1;i<distinct.size();i++)
+    {
+        if(distinct[i]-distinct[i-1]==1)
+        {
+            count+=freq[distinct[i]];
+            
+        }
+        else
+        {
+            count=freq[distinct[i]];
+        }
+        max_count=max(count,max_count);
+    }
+    cout<<"MAX"<<max_count;
+}
