@@ -1,0 +1,29 @@
+
+
+#include <iostream>
+#include<algorithm>
+#include <unordered_set>
+#include<vector>
+using namespace std;
+int main()
+{
+    unordered_set<char>st;
+    unordered_set<char>duplicate;
+    string s;
+    cout<<"Enter string ";
+    cin>>s;
+    for(char c:s)
+    {
+        if(st.find(c)==st.end())
+        {
+            st.insert(c);
+        }
+        else if(duplicate.find(c)==duplicate.end())
+        {
+            cout<<c<<endl;
+            duplicate.insert(c);
+        }
+    }
+
+    return 0;
+}
